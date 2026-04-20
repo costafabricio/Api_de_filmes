@@ -1,8 +1,30 @@
 .navbar {
     background-color: #0f172a;
     padding: 12px 3%;
+    display: flex;
+    justify-content: space-between;
 
     .page-title {
         color: #fff;
     }
+
+    .form {
+      .research {
+        background-color: transparent;
+        height: 30px;
+        width: 230px;
+        text-decoration: none;
+        margin-top: 3px;
+        padding: 7px;
+    }
+
+     .research::placeholder {
+        color: #fff;
+    }
+
+    .button {
+        background-color: transparent;
+        font-size: 10px;
+    }
+   }
 }
