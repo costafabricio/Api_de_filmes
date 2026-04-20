@@ -1,36 +1,20 @@
 "use client";
-
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./index.scss";
-import axios from "axios";
 import MovieCard from "../MovieCard";
-import { Movie } from "@/types/movie";
+import { useMovies } from "@/components/context"; // Pega do balão
 import ClipLoader from "react-spinners/ClipLoader";
 
 export default function MovieList() {
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true)
+  // Pegamos os filmes, o carregamento e a função do nosso contexto
+  const { movies, loading, searchMovies } = useMovies();
 
   useEffect(() => {
-    getMovies();
+    // Quando abrir a página, busca os filmes iniciais
+    searchMovies(""); 
   }, []);
 
-  const getMovies = async () => {
-    await axios({
-      method: "get",
-      url: "https://api.themoviedb.org/3/discover/movie",
-      params: {
-        api_key: "6471a41c1771d64839fc8f8ddea58884",
-        language: "pt-BR",
-      },
-    }).then((response) => {
-      setMovies(response.data.results);
-    });
-
-    setIsLoading(false)
-  };
-
-  if(isLoading) {
+  if (loading) {
     return (
       <div className="loading-container">
           <ClipLoader color="#6046ff" size={50} />

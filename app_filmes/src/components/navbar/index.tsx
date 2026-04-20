@@ -1,40 +1,47 @@
 "use client"
-
-import { useState } from 'react'
-
-import './index.scss'
+import { useState, FormEvent } from 'react'
+import { useMovies } from '@/components/context' 
 import { BsSearch } from 'react-icons/bs'
+import './index.scss'
 
 export default function Navbar() {
     const [input, setInput] = useState("")
+    const { searchMovies } = useMovies() 
 
     function onResearch(e: FormEvent) {
         e.preventDefault()
-
-        if(input === '') return
-
-       navigate(`/detail/${input}`)
+        searchMovies(input) 
     }
 
-    return(
+    function handleLogoClick() {
+        setInput("") 
+        searchMovies("") 
+    }
+
+    return (
         <nav className="navbar">
-            <h1 className="page-title">Filmes</h1>
+            <h1 
+             className="page-title" 
+             onClick={handleLogoClick} 
+             style={{ cursor: 'pointer' }}
+             >
+                Filmes
+            </h1>
 
-            <div>
-             <form onSubmit={onResearch} className='form'>
-              <input 
-              type="text" 
-              placeholder='Pesquisar' 
-              className='research'
-              value={input}
-              onChange={(e) => setInput(e.target.value)} 
-              />
-               <button type='submit' className='button'>
-                  <BsSearch size={30} color="#fff"/>
-               </button>
-             </form>
+            <div className='container-form'>
+                <form onSubmit={onResearch} className='form'>
+                    <input 
+                        type="text" 
+                        placeholder='Pesquisar' 
+                        className='research'
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)} 
+                    />
+                    <button type='submit' className='button'>
+                        <BsSearch size={20} color="#fff"/>
+                    </button>
+                </form>
             </div>
-
         </nav>
     )
 }
