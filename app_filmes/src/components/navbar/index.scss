@@ -5,25 +5,30 @@
     justify-content: space-between;
     align-items: center;
 
+    .logo-link {
+    text-decoration: none; // Remove o sublinhado do link
+    color: inherit;       // Garante que o H1 dite a cor
+    display: flex;         // Ajuda a alinhar o conteúdo interno
+    align-items: center;
+
     .page-title {
-        color: #e2e8f0; 
-        font-family: sans-serif;
-        cursor: pointer;
-        
-        transition: all 0.3s ease-in-out; 
-        
-        user-select: none;
+      color: #e2e8f0;
+      font-family: sans-serif;
+      margin: 0; // Remove margens padrão do h1 que podem quebrar o alinhamento
+      transition: all 0.3s ease-in-out;
+      user-select: none;
 
-        &:hover {
-            color: #ffffff; 
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3); 
-            transform: scale(1.02); 
-        }
+      &:hover {
+        color: #ffffff;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+        transform: scale(1.02);
+      }
 
-        &:active {
-            transform: scale(0.95); 
-        }
+      &:active {
+        transform: scale(0.95);
+      }
     }
+  }
 
     .container-form {
         width: 100%;

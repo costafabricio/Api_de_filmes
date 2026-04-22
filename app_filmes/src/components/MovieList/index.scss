@@ -1,15 +1,56 @@
-.loading-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: calc(100vh - 72px);
+.home-wrapper {
+  // Garante que a página comece abaixo da Navbar (ajuste conforme a altura da sua navbar)
+  padding-top: 10px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .movie-list {
-    padding: 24px 3%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    list-style: none;
-    width: 100%;
+  padding: 24px 3%;
+  display: grid;
+  // auto-fill é melhor que auto-fit para scroll infinito para manter o alinhamento
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+  gap: 24px; // Aumentei um pouco o espaçamento para ficar mais elegante
+  list-style: none;
+  width: 100%;
+  max-width: 1400px; // Evita que os cards fiquem gigantes em telas ultra-wide
+}
+
+// Container de carregamento que aparece NO TOPO (quando a página abre)
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 72px);
+  color: #6046ff;
+}
+
+// NOVO: Container de carregamento que aparece NO RODAPÉ (ao rolar)
+.loading-more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 40px 0;
+  width: 100%;
+  color: #6046ff;
+  font-weight: 600;
+  
+  p {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+}
+
+// Mensagem de fim de lista
+.end-of-list {
+  padding: 40px;
+  color: #64748b;
+  font-size: 0.9rem;
+  text-align: center;
+  opacity: 0.7;
 }

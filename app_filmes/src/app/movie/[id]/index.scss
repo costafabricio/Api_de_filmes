@@ -1,0 +1,199 @@
+.movie-details-page {
+    position: relative;
+    min-height: 100vh;
+    background-color: #06090f;
+    color: white;
+    padding-top: 100px;
+    overflow-x: hidden;
+
+    .backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80vh;
+        background-size: cover;
+        background-position: center top;
+        z-index: 0;
+
+        .overlay {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(6, 9, 15, 0.2) 0%, #06090f 100%);
+        }
+    }
+
+    .container {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        gap: 60px;
+        align-items: flex-start;
+
+        .poster-area img {
+            width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            transition: transform 0.3s ease;
+            
+            &:hover {
+                transform: scale(1.02);
+            }
+        }
+
+        .info-area {
+            flex: 1;
+
+            h1 {
+                font-size: 3.8rem;
+                margin-bottom: 15px;
+                font-weight: 900;
+                line-height: 1.1;
+                text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            }
+
+            .meta-data {
+                display: flex;
+                gap: 25px;
+                margin-bottom: 25px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: #cbd5e1;
+                
+                .rating { color: #46d369; font-weight: 800; }
+            }
+
+            .genres {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+                margin-bottom: 35px;
+
+                .genre-tag {
+                    background: rgba(255, 255, 255, 0.15);
+                    backdrop-filter: blur(5px);
+                    padding: 6px 18px;
+                    border-radius: 50px;
+                    font-size: 0.85rem;
+                    border: 1px solid rgba(255,255,255,0.1);
+                }
+            }
+
+            .overview {
+                font-size: 1.25rem;
+                line-height: 1.7;
+                max-width: 800px;
+                margin-bottom: 45px;
+                color: #e2e8f0;
+            }
+
+            .actions {
+                display: flex;
+                gap: 20px;
+
+                button {
+                    padding: 14px 40px;
+                    border-radius: 6px;
+                    font-size: 1.1rem;
+                    font-weight: 700;
+                    cursor: pointer;
+                    border: none;
+                    transition: all 0.2s ease;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    &:disabled {
+                        opacity: 0.5;
+                        cursor: not-allowed;
+                    }
+                }
+
+                .btn-trailer {
+                  background-color: #fff;
+                  color: #000;
+                  &:hover { background-color:  #e2e8f0; transform: scale(1.05);}
+                }
+            }
+        }
+    }
+
+    // Estilo do Modal
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+
+        .modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0,0,0,1);
+
+            iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+
+            .close-btn {
+                position: absolute;
+                top: -45px;
+                right: 0;
+                background: none;
+                border: none;
+                color: #fff;
+                font-size: 1.2rem;
+                cursor: pointer;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                
+                &:hover { color: #ff4444; }
+            }
+        }
+    }
+}
+
+.loading {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    background: #06090f;
+}
+
+// Responsividade básica
+@media (max-width: 900px) {
+    .movie-details-page .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        
+        .info-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .actions {
+            flex-direction: column;
+            width: 100%;
+        }
+    }
+}
